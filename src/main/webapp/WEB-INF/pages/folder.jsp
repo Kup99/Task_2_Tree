@@ -6,6 +6,8 @@
 <head>
 </head>
 <body>
+${count}
+
 <style>
     body { background: url(/resources/images/theme.jpg); }
 </style>

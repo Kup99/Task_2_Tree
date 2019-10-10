@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -51,4 +52,5 @@ public class FolderServiceImpl implements FolderService {
     public void move(long id,long parent_id) {
         folderDao.move(id,parent_id);
     }
+
 }

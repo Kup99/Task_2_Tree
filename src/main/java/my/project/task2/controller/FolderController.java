@@ -24,8 +24,11 @@ public class FolderController {
             model.addAttribute("no_direct", "No directories yet");
         }
         model.addAttribute("parent_id", 0L);
+
         return "index";
     }
+
+
 
     @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
     public String addPage(@PathVariable("id") Long parent_id, @ModelAttribute("folder") Folder folder, ModelMap model) {
@@ -41,15 +44,20 @@ public class FolderController {
     }
 
 
-
     @RequestMapping(value = "/getFolder/{parent_id}", method = RequestMethod.GET)
     public String getFolder(@PathVariable("parent_id") Long id, ModelMap model) {
+        Thread thread = Thread.currentThread();
+         {
+            try {
+                thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         model.addAttribute("child", folderService.getChild(id));
         model.addAttribute("id", id);
         return "folder";
     }
-
-
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -72,7 +80,7 @@ public class FolderController {
         model.addAttribute("id", id);
         model.addAttribute("folder_id", folder_id);
         model.addAttribute("folderList", folderService.getAll());
-        folderService.move(id,folder_id);
+        folderService.move(id, folder_id);
         return "redirect:/";
     }
 
